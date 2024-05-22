@@ -1,25 +1,30 @@
-import { VStack, Image, Text, Center, Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Stack, Box } from "@chakra-ui/react"
+import { Image, Text, Center, Flex, Card, CardBody, Heading, Stack,Box } from "@chakra-ui/react"
  
 
 
 export type Props = {
     name: string;
     imageUrl: string;
+    id:string;
+    types:string
 }
-export const PokeCard = ({name, imageUrl}: Props) => {
+export const PokeCard = ({name, imageUrl,id,types}: Props) => {
 
 
     return (
-        <Card maxW='sm'>
+
+        <Card maxW='sm' border='4px solid white'>
         <CardBody>
           <Center 
           h='300px'
           w='340px'
           backgroundImage='/img/pokeFlorest.jpg'
           backgroundSize='cover'
+          borderRadius='30px'
+          border='2px solid white'
           >
             <Image
-             h='180px'
+             h='280px'
              src={imageUrl} alt={name}/>
           </Center>
           <Stack 
@@ -29,11 +34,12 @@ export const PokeCard = ({name, imageUrl}: Props) => {
             textAlign='center'  
             size='md'            
             >
-                {name}
+                {name ? 'n°'+' '+id+' - '+name : 'Pokemon'}
             </Heading>
-            <Text >
-              Types
-            </Text>            
+
+            <Flex>
+                <Text>Types:</Text>
+            </Flex>            
           </Stack>
         </CardBody>
         
