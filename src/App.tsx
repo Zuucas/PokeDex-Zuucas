@@ -1,41 +1,35 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { Button, Flex, Input, VStack, Image, InputGroup, InputRightElement } from "@chakra-ui/react";
 import {  useEffect, useState } from 'react';
-import { PokeCard } from './components/pokeCard/App';
+import { PokeCard } from './components/pokeCard/PokeCard';
 import { Search2Icon } from '@chakra-ui/icons';
+import { pokemon } from './types/type';
 
 function App() {
 
 const [pokemonInput, setPokemonInput] = useState('');
-const [pokemon, setPokemon] = useState('');
-const [pokemonUrl, setPokemonUrl] = useState('');
-const [pokemonId, setPokemonID] = useState('');
-const [pokemonTypes, setPokemonTypes] = useState('');
 
-
+const [pokemon, setPokemon] = useState< pokemon >();
 
 const handleClick = () => {
   if (pokemonInput) {
     getPokemon();    
     setPokemonInput('')
+    
   }
 };
 
 
-const getPokemon = () => {
-  axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonInput.toLowerCase()}`)
-  .then((response) => {
-    setPokemon(response.data.name)
-    setPokemonUrl(response.data.sprites.front_default)
-    setPokemonID(response.data.id)
+const getPokemon = async () => {
+  await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonInput.toLowerCase()}`)
+  .then((response:AxiosResponse<pokemon>) => {
+    setPokemon(response.data)
   })
 }
 
 useEffect(() => {
-  
-}, [pokemonInput]);
-
-
+  console.log(pokemon?.name);
+}, [pokemon]);
 
   return (
     <VStack 
@@ -44,12 +38,10 @@ useEffect(() => {
     h='100vh'
     backgroundImage='/img/pokeScenary.png'
     backgroundSize='cover'
-    position='relative'
     >  
     <Image 
     src='/img/pokeLogo.png' 
     alt='logoPoke'
-    // h='300px'
     w='340px'
     /> 
 
@@ -58,10 +50,7 @@ useEffect(() => {
         <InputGroup>
             <Input 
             border='2px solid black'
-            // color='black'
-            // bg='white'
-            placeholder='Search'
-            // _placeholder={{ color: 'black' }} 
+            placeholder='Nome ou n° do Pokemon'
             variant='fluid' 
             value={pokemonInput}
             onChange={e => setPokemonInput(e.target.value)}
@@ -71,8 +60,6 @@ useEffect(() => {
             <InputRightElement>
                 <Button
                 bg='black'
-                // _hover={{color:'white'}}
-                // w='80px'
                 border='3px solid black'
                 onClick={handleClick}
                 >
@@ -83,16 +70,16 @@ useEffect(() => {
           </InputGroup>
       </Flex>
 
-      <PokeCard 
-      imageUrl={pokemonUrl}
-      name={pokemon}
-      id={pokemonId}
-      types={''}
-      />
       
-    
-      
-      
+      {pokemon && (
+        <PokeCard 
+          sprites={pokemon.sprites.front_default}
+          name={pokemon.name}
+          id={pokemon.id}
+          types={pokemon.types.map((i: { type: { name: string; }; }) => i.type.name).join(', ')}
+        />
+
+      )}
     </VStack>
   );
 }
