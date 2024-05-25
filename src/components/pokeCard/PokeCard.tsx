@@ -17,6 +17,7 @@ export const PokeCard = ({name, sprites,id,types}: Props) => {
         <Card 
         maxW='sm' 
         border='4px solid white'
+        bg='transparent'
         >
         <CardBody>
           <Center 
