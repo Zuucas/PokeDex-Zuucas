@@ -58,7 +58,7 @@ export const PokeCard = ({name, sprites,id,types}: Props) => {
               
                 <Button variant='ghost' colorScheme='whiteAlpha'
                 color='yellow'>
-                  <Link to={`/${name}`}>
+                  <Link to={`/${id}`}>
                     Poke Detail
                   </Link>
                 </Button>
