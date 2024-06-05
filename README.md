@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+# Pokedex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto de pokedex, consumindo a API POKEMON : https://pokeapi.co/api/v2/pokemon/
 
-Currently, two official plugins are available:
+## Estudos no projeto:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Através de uma publicação que vi no linkedin, tive a ideia de replicar um projeto de pokedex, usando os meus conhecimentos e com isso
+aprendi mais sobre a tipagem do typescript, facilitando a manipulação dos dados para serem exibidos, utilizei a lib AXIOS para fazer a 
+requisição da API.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologias utilizadas :rocket: :
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+<ul>
+<li>React.JS</li>
+<li>TypeScript</li>
+<li>Axios</li>
+<li>Chakra.UI</li>  
+</ul>
+### Link de visualização: <a href="https://pokedex-zuucas.vercel.app/">PokeDex</a>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Prints:
+![poke](https://github.com/Zuucas/PokeDex-Zuucas/assets/106625939/49351add-9141-490e-969f-97f14b7c26f6)
