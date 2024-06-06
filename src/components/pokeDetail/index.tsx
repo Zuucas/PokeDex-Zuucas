@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { pokemon } from '../../types/type';
-import { Center, Flex, Image,Text } from "@chakra-ui/react";
+import { Flex, Image,Text } from "@chakra-ui/react";
 
 
 const pokeURL = import.meta.env.VITE_API;
